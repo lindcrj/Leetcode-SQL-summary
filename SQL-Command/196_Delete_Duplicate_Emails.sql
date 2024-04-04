@@ -1,18 +1,3 @@
--- Solution 1: SQL Command, Join
-DELETE p1 
-FROM person p1
-JOIN person p2
-    ON p1.email = p2.email AND p1.id > p2.id;  
-    
-
-
--- Solution 2: SQL Command, Subquery
-DELETE FROM person
-WHERE id NOT IN (
-    SELECT *
-    FROM (
-        SELECT MIN(id) AS id
-        FROM person
-        GROUP BY email
-        ) tb1
-);
+DELETE p1
+FROM Person p1, Person p2
+WHERE p1.Email = p2.Email AND p1.id > p2.id;
